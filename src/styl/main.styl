@@ -1,0 +1,31 @@
+@import 'mixins'
+
+*
+	line-height 1.65
+	box-sizing:border-box
+	text-rendering optimizeLegibility
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+html,body
+	scrollbar-width none /* Firefox */
+	-ms-overflow-style none /* IE 10+ */
+	::-webkit-scrollbar
+		display none /* WebKit */
+		width 0px /* WebKit */
+	scroll-behavior smooth
+	//
+	font-family sans-serif
+	//
+	height 100%
+	width 100%
+
+.container
+	width 1170px
+	+bp(l)
+		width 970px
+	+bp(m)
+		width 860px
+	+bp(800px)
+		width 100%
+	margin 0 auto
