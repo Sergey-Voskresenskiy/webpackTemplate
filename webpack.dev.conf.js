@@ -3,7 +3,7 @@
 
 let webpack = require('webpack')
 let merge = require('webpack-merge')
-let baseWebpackConfig = require('./webpack.base.conf') 
+let baseWebpackConfig = require('./webpack.base.conf')
 
 let devWebpackConfig = merge(baseWebpackConfig, {
   devtool: 'cheap-module-eval-source-map',
@@ -21,7 +21,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
     rules: [
       {
         test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-        exclude: `${baseWebpackConfig.externals.paths.fonts}`, 
+        exclude: `${baseWebpackConfig.externals.paths.fonts}`,
         use: [
           {
             loader: 'file-loader',

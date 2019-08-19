@@ -5,6 +5,7 @@ let MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let TerserPlugin = require('terser-webpack-plugin');
 let glob = require('glob');
+let DashboardPlugin = require("webpack-dashboard/plugin");
 
 const PATHS = {
 	src: path.join(__dirname, './src'),
@@ -81,11 +82,11 @@ module.exports = {
 						loader: 'css-loader?sourceMap'
 					},
 					{
-						loader: 'postcss-loader?sourceMap',
+						loader: 'postcss-loader',
 						options: {config: { path: `${PATHS.src}/js/postcss.config.js` } }
 					},
 					{
-						loader: 'stylus-loader?sourceMap',
+						loader: 'stylus-loader',
 					},
 				]
 			},
@@ -93,6 +94,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new DashboardPlugin(),
 		new CleanWebpackPlugin(`${PATHS.dist}`,[{verbose: true}]),
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[hash].css`,
