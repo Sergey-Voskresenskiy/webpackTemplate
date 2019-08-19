@@ -1,11 +1,14 @@
-let path = require('path');
-let webpack = require('webpack')
-let HtmlWebpackPlugin = require('html-webpack-plugin')
-let MiniCssExtractPlugin = require('mini-css-extract-plugin')
-let CleanWebpackPlugin = require('clean-webpack-plugin')
-let TerserPlugin = require('terser-webpack-plugin');
-let glob = require('glob');
-let DashboardPlugin = require("webpack-dashboard/plugin");
+const path = require('path');
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
+const glob = require('glob');
+const DashboardPlugin = require("webpack-dashboard/plugin");
+const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');
+const { DuplicatesPlugin } = require('inspectpack/plugin');
+
 
 const PATHS = {
 	src: path.join(__dirname, './src'),
@@ -95,6 +98,8 @@ module.exports = {
 	},
 	plugins: [
 		new DashboardPlugin(),
+		new UnusedFilesWebpackPlugin(),
+		new DuplicatesPlugin(),
 		new CleanWebpackPlugin(`${PATHS.dist}`,[{verbose: true}]),
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[hash].css`,
