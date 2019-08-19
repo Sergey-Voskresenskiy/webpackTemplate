@@ -29,6 +29,20 @@ module.exports = {
 		filename: `${PATHS.assets}js/[name].[hash].js`,
 		publicPath: '/'
 	},
+	devServer: {
+		historyApiFallback: true,
+		bonjour: true,
+		host: '0.0.0.0',
+		disableHostCheck: true,
+		hot: true,
+		inline: true,
+		open: true,
+		compress: true,
+		overlay: {
+			warnings: true,
+			errors: true
+		},
+	},
 	module:{
 		rules: [
 			{
