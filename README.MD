@@ -3,3 +3,11 @@
 ```npm run dev``` - for start work
 
 ```npm run build``` - for start build
+
+## Dependencies
+
+>  jquery
+
+>  lazyload
+
+>  reset-css
