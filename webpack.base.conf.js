@@ -9,7 +9,6 @@ const DashboardPlugin = require("webpack-dashboard/plugin");
 const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');
 const { DuplicatesPlugin } = require('inspectpack/plugin');
 
-
 const PATHS = {
 	src: path.join(__dirname, './src'),
 	dist: path.join(__dirname, './dist'),
@@ -53,7 +52,6 @@ module.exports = {
 						presets: [
 							'@babel/preset-env', {
 								"exclude": ["transform-async-to-generator", "transform-regenerator"],
-
 							}
 						],
 						plugins: [
@@ -90,17 +88,39 @@ module.exports = {
 				}]
 			},
 			{
-				test: /\.(sa|sc|c)ss|styl$/,
+				test: /\.module\.css$/i,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+						},
+					},
+				],
+			},
+			{
+				test: /\.css|styl$/,
+				//test: /\.(sa|sc|c)ss|styl$/,
 				exclude: '/node_modules/',
 				use:[
 					'style-loader',
 					MiniCssExtractPlugin.loader,
 					{
-						loader: 'css-loader?sourceMap'
+						loader: 'css-loader',
+						options: {
+							import: true,
+							sourceMap: true,
+							importLoaders: 2,
+						}
 					},
 					{
 						loader: 'postcss-loader',
-						options: {config: { path: `${PATHS.src}/js/postcss.config.js` } }
+						options: {
+							config: {
+								path: `${PATHS.src}/js/postcss.config.js`
+							}
+						}
 					},
 					{
 						loader: 'stylus-loader',
