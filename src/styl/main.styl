@@ -1,11 +1,13 @@
 @import 'mixins'
 
 *
-	line-height 1.65
+	line-height 1.65!important
 	box-sizing:border-box
 	text-rendering optimizeLegibility
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
+	outline none!important
+	-webkit-tap-highlight-color: transparent !important
 
 html,body
 	scrollbar-width none /* Firefox */
@@ -27,3 +29,19 @@ html,body
 	+bp(800px)
 		width 100%
 	margin 0 auto
+
+img
+	height 100%
+	width 100%
+	object-fit cover
+
+button, input, textarea
+	margin 0
+	padding 0
+	background transparent
+
+span
+	color inherit
+
+a
+	text-decoration none
