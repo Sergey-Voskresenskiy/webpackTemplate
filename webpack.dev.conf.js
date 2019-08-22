@@ -18,33 +18,62 @@ let devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   module:{
-    rules: [
-      {
-        test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-        exclude: `${baseWebpackConfig.externals.paths.fonts}`,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: `[name].[ext]?[hash]`,
-              outputPath: `${baseWebpackConfig.externals.paths.assets}img`,
-              useRelativePath: true,
-            },
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: false,
-              },
-              optipng: {
-                enabled: false,
-              },
-            },
-          },
-        ]
-      },
-    ]
+		rules: [
+			{
+				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'file-loader',
+				options: {
+					name: `${PATHS.assets}fonts/[name].[ext]`
+				}
+			},
+			{
+				test: /\.(mp3|mp4|webp)(\?v=\d+\.\d+\.\d+)(\?.*)?$/,
+				use: [{
+					loader: 'file-loader'
+				}]
+			},
+			{
+				test: /\.module\.css$/i,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+						},
+					},
+				],
+			},
+			{
+				test: /\.css|styl$/,
+				//test: /\.(sa|sc|c)ss|styl$/,
+				exclude: '/node_modules/',
+				use:[
+					'style-loader',
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							import: true,
+							sourceMap: true,
+							importLoaders: 2,
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: `${PATHS.src}/js/postcss.config.js`
+							}
+						}
+					},
+					{
+						loader: 'stylus-loader',
+					},
+				]
+			},
+
+		]
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({

@@ -25,7 +25,7 @@ module.exports = {
 	},
 	output: {
 		path: PATHS.dist,
-		filename: `${PATHS.assets}js/[name].[hash].js`,
+		filename: `${PATHS.assets}js/[name].js`,
 		publicPath: '/'
 	},
 	devServer: {
@@ -78,7 +78,7 @@ module.exports = {
 				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
 				loader: 'file-loader',
 				options: {
-					name: `${PATHS.assets}fonts/[name].[hash].[ext]`
+					name: `${PATHS.assets}fonts/[name].[ext]`
 				}
 			},
 			{
@@ -101,7 +101,6 @@ module.exports = {
 			},
 			{
 				test: /\.css|styl$/,
-				//test: /\.(sa|sc|c)ss|styl$/,
 				exclude: '/node_modules/',
 				use:[
 					'style-loader',
@@ -136,7 +135,7 @@ module.exports = {
 		new DuplicatesPlugin(),
 		new CleanWebpackPlugin(`${PATHS.dist}`,[{verbose: true}]),
 		new MiniCssExtractPlugin({
-			filename: `${PATHS.assets}css/[name].[hash].css`,
+			filename: `${PATHS.assets}css/[name].css`,
 		}),
 		...glob.sync(`${PATHS.src}/*.html`).map(htmlFile => {
 			return new HtmlWebpackPlugin({
