@@ -15,7 +15,7 @@ let buildWebpackConfig = merge(baseWebpackConfig, {
           {
             loader: 'file-loader',
             options: {
-              name: `[name].[ext]?[hash]`,
+              name: `[name].[ext]`,
               outputPath: `${baseWebpackConfig.externals.paths.assets}img`,
               useRelativePath: true,
             },
