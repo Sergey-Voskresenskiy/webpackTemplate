@@ -16,7 +16,7 @@
 
 ----------
 
-######💬 How to use lazy image loading 💬
+###### 💬 How to use lazy image loading 💬
 - use the code below without changing "src"
 - put a patch to an image to data-src=" "
 ````
@@ -24,7 +24,7 @@
 ````
 
 
-######💬 How to use svg sprites 💬
+###### 💬 How to use svg sprites 💬
 - put the name of the SVG file in "href" after #
 
 ````
