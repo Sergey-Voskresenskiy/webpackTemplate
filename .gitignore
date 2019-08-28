@@ -1,5 +1,5 @@
 dist/
-
+.idea
 # Created by https://www.gitignore.io/api/node,phpstorm
 # Edit at https://www.gitignore.io/?templates=node,phpstorm
 
