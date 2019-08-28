@@ -1,26 +1,23 @@
-
 // --mode development
-
-let webpack = require('webpack')
-let merge = require('webpack-merge')
-let baseWebpackConfig = require('./webpack.base.conf')
-
-let devWebpackConfig = merge(baseWebpackConfig, {
+let webpack = require ('webpack')
+let merge = require ('webpack-merge')
+let baseWebpackConfig = require ('./webpack.base.conf')
+let devWebpackConfig = merge (baseWebpackConfig, {
 	devtool: 'cheap-module-eval-source-map',
 	mode: 'development',
-	devServer:{
+	devServer: {
 		contentBase: baseWebpackConfig.externals.paths.dist,
 		port: 8080,
 		open: true,
 		overlay: {
 			warnings: false,
-			errors:true
+			errors: true
 		}
 	},
-	module:{
+	module: {
 		rules: [
 			{
-				test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+				test: /\.(png|jpe?g|gif|ico)(\?.*)?$/,
 				exclude: `${baseWebpackConfig.externals.paths.fonts}`,
 				use: [
 					{
@@ -47,11 +44,11 @@ let devWebpackConfig = merge(baseWebpackConfig, {
 		]
 	},
 	plugins: [
-		new webpack.SourceMapDevToolPlugin({
+		new webpack.SourceMapDevToolPlugin ({
 			filename: '[file].map'
 		}),
 	]
 })
-module.exports = new Promise((resolve, reject) => {
-	resolve(devWebpackConfig)
+module.exports = new Promise ((resolve, reject) => {
+	resolve (devWebpackConfig)
 })

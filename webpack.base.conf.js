@@ -1,21 +1,20 @@
-const path = require('path');
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin');
-const glob = require('glob');
-const DashboardPlugin = require("webpack-dashboard/plugin");
-const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');
-const { DuplicatesPlugin } = require('inspectpack/plugin');
-
+const path = require ('path');
+const webpack = require ('webpack')
+const HtmlWebpackPlugin = require ('html-webpack-plugin')
+const MiniCssExtractPlugin = require ('mini-css-extract-plugin')
+const CleanWebpackPlugin = require ('clean-webpack-plugin')
+const TerserPlugin = require ('terser-webpack-plugin');
+const glob = require ('glob');
+const DashboardPlugin = require ("webpack-dashboard/plugin");
+const {UnusedFilesWebpackPlugin} = require ('unused-files-webpack-plugin');
+const {DuplicatesPlugin} = require ('inspectpack/plugin');
+const SpriteLoaderPlugin = require ('svg-sprite-loader/plugin');
 const PATHS = {
-	src: path.join(__dirname, './src'),
-	dist: path.join(__dirname, './dist'),
-	fonts: path.join(__dirname,'./src/fonts'),
+	src: path.join (__dirname, './src'),
+	dist: path.join (__dirname, './dist'),
+	fonts: path.join (__dirname, './src/fonts'),
 	assets: 'assets/',
 }
-
 module.exports = {
 	externals: {
 		paths: PATHS
@@ -42,7 +41,7 @@ module.exports = {
 			errors: true
 		},
 	},
-	module:{
+	module: {
 		rules: [
 			{
 				test: /\.m?js$/,
@@ -57,7 +56,7 @@ module.exports = {
 						plugins: [
 							['@babel/plugin-proposal-optional-chaining'],
 							['@babel/plugin-proposal-nullish-coalescing-operator'],
-							["module:fast-async", { "spec": true }]
+							["module:fast-async", {"spec": true}]
 						]
 					}
 				},
@@ -68,7 +67,7 @@ module.exports = {
 				use: [{
 					loader: 'html-loader',
 					options: {
-						attrs: ['img:src','img:data-src'],
+						attrs: ['img:src', 'img:data-src'],
 						minimize: false,
 						interpolate: true,
 					}
@@ -88,6 +87,40 @@ module.exports = {
 				}]
 			},
 			{
+				test: /\.(svg)(\?.*)?$/,
+				use: [
+					{
+						loader: 'svg-sprite-loader',
+						options: {
+							extract: false,
+							symbolId: '[name]',
+						}
+					},
+					{
+						loader: 'svgo-loader',
+						options: {
+							plugins: [
+								{removeAttrs: {attrs: '*:(stroke|fill):((?!^none$).)*'}},
+								{removeTitle: true},
+								{removeComments: true},
+								{removeDesc: true},
+								{removeMetadata: true},
+								{removeEmptyAttrs: true},
+								{removeHiddenElems: true},
+								{removeXMLProcInst: true},
+								{removeEmptyContainers: true},
+								{removeStyleElement: true},
+								{removeScriptElement: true},
+								{removeUselessStrokeAndFill: true},
+								{sortAttrs: true},
+								{convertColors: {shorthex: false}},
+								{convertPathData: false}
+							]
+						}
+					},
+				]
+			},
+			{
 				test: /\.module\.css$/i,
 				use: [
 					'style-loader',
@@ -102,7 +135,7 @@ module.exports = {
 			{
 				test: /\.css|styl$/,
 				exclude: '/node_modules/',
-				use:[
+				use: [
 					'style-loader',
 					MiniCssExtractPlugin.loader,
 					{
@@ -126,24 +159,24 @@ module.exports = {
 					},
 				]
 			},
-
 		]
 	},
 	plugins: [
-		new DashboardPlugin(),
-		new UnusedFilesWebpackPlugin(),
-		new DuplicatesPlugin(),
-		new CleanWebpackPlugin(`${PATHS.dist}`,[{verbose: true}]),
-		new MiniCssExtractPlugin({
+		new SpriteLoaderPlugin (),
+		new DashboardPlugin (),
+		new UnusedFilesWebpackPlugin (),
+		new DuplicatesPlugin (),
+		new CleanWebpackPlugin (`${PATHS.dist}`, [{verbose: true}]),
+		new MiniCssExtractPlugin ({
 			filename: `${PATHS.assets}css/[name].css`,
 		}),
-		...glob.sync(`${PATHS.src}/*.html`).map(htmlFile => {
-			return new HtmlWebpackPlugin({
-				filename: path.basename(htmlFile),
+		...glob.sync (`${PATHS.src}/*.html`).map (htmlFile => {
+			return new HtmlWebpackPlugin ({
+				filename: path.basename (htmlFile),
 				template: htmlFile
 			});
 		}),
-		new webpack.ProvidePlugin({
+		new webpack.ProvidePlugin ({
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery'
@@ -151,7 +184,7 @@ module.exports = {
 	],
 	optimization: {
 		minimizer: [
-			new TerserPlugin({
+			new TerserPlugin ({
 				test: /\.js(\?.*)?$/i,
 				parallel: true,
 				sourceMap: true,
