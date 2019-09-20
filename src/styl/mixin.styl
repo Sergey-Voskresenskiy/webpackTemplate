@@ -1,6 +1,10 @@
 tease()
 	transition all .5s ease-in-out
 
+line($fz, $lh)
+ font-size: unit($fz, rem)
+ line-height unit($lh / $fz, '')
+
 objf()
 	object-fit cover
 	object-position top
