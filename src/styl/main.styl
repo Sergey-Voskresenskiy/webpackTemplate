@@ -1,8 +1,7 @@
-@import 'mixin'
+// @import 'mixin'
 
 *
 	line-height 1.65!important
-	box-sizing:border-box
 	text-rendering optimizeLegibility
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
@@ -21,13 +20,9 @@ html,body
 	width 100%
 
 .container
-	width 1170px
-	+bp(l)
-		width 970px
-	+bp(m)
-		width 860px
-	+bp(800px)
-		width 100%
+	max-width 1170px
+	width 100%
+	position relative
 	margin 0 auto
 
 img
@@ -45,4 +40,5 @@ span
 	color inherit
 
 a
+	color inherit
 	text-decoration none

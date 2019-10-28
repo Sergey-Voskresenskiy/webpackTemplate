@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dashboard -c -m -t -- webpack-dev-server --color --hot --inline --progress --config webpack.dev.conf.js --watch",
+    "dev": "webpack-dashboard -c -m -t -- webpack-dev-server --color --progress --config webpack.dev.conf.js --watch",
     "build": "webpack --config webpack.build.conf.js"
   },
   "browserslist": [

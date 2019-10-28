@@ -2,12 +2,10 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const glob = require("glob");
 const DashboardPlugin = require("webpack-dashboard/plugin");
-const { UnusedFilesWebpackPlugin } = require("unused-files-webpack-plugin");
-const { DuplicatesPlugin } = require("inspectpack/plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 const PATHS = {
   src: path.join(__dirname, "./src"),
@@ -26,19 +24,6 @@ module.exports = {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].js`,
     publicPath: "/"
-  },
-  devServer: {
-    historyApiFallback: true,
-    //host: '0.0.0.0',
-    //disableHostCheck: true,
-    hot: true,
-    inline: true,
-    open: true,
-    compress: true,
-    overlay: {
-      warnings: true,
-      errors: true
-    }
   },
   module: {
     rules: [
@@ -171,9 +156,7 @@ module.exports = {
   plugins: [
     new SpriteLoaderPlugin(),
     new DashboardPlugin(),
-    new UnusedFilesWebpackPlugin(),
-    new DuplicatesPlugin(),
-    new CleanWebpackPlugin({ verbose: true }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`
     }),

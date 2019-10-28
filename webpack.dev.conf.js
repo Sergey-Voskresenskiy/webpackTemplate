@@ -7,10 +7,14 @@ let devWebpackConfig = merge (baseWebpackConfig, {
 	mode: 'development',
 	devServer: {
 		contentBase: baseWebpackConfig.externals.paths.dist,
-		port: 8080,
-		open: true,
+		historyApiFallback: true,
+    open: true,
+    port: 666,
+    inline: true,
+    hot: true,
+    liveReload: true,
 		overlay: {
-			warnings: false,
+      warnings: true,
 			errors: true
 		}
 	},

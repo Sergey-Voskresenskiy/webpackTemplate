@@ -7,17 +7,3 @@ line($fz, $lh)
 
 objf()
 	object-fit cover
-	object-position top
-
-bp($point)
-	$bp-m = "(max-width 970px)"
-	$bp-l = "(max-width 1170px)"
-	if $point = l
-		@media $bp-l
-			{block}
-	else if $point = m
-		@media $bp-m
-			{block}
-	else
-		@media ( max-width $point )
-			{block}
