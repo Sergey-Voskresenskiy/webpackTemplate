@@ -1,10 +1,16 @@
 #  Webpack template for simple layouts
 ----------
-package.json ```("scripts": {"dev": "webpack-dashboard -c -m -t ...)```
+package.json 
+```json
+"scripts": {"dev": "webpack-dashboard -c -m -t ...
+```
 ![screenshot webpack-dashboard -c -m -t](screenshot.png)
 
 ----------
-package.json ```("scripts": {"dev": "webpack-dashboard -c -t ...)```
+package.json 
+```json
+"scripts": {"dev": "webpack-dashboard -c -t ...
+```
 ![screenshot webpack-dashboard -c -t](screenshot2.png)
 
 ----------
