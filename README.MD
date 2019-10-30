@@ -1,4 +1,5 @@
 #  Webpack template for simple layouts
+----------
 package.json ```("scripts": {"dev": "webpack-dashboard -c -m -t ...)```
 ![screenshot webpack-dashboard -c -m -t](screenshot.png)
 
@@ -6,7 +7,8 @@ package.json ```("scripts": {"dev": "webpack-dashboard -c -m -t ...)```
 package.json ```("scripts": {"dev": "webpack-dashboard -c -t ...)```
 ![screenshot webpack-dashboard -c -t](screenshot2.png)
 
-```npm run dev``` - for start work <i>(with webpack-dashboard</i> :fire:<i>)</i>
+----------
+```npm run dev``` - for start work <i>(with webpack-dashboard)</i> :fire:
 
 ```npm run build``` - for start build
 
