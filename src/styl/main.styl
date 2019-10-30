@@ -1,44 +1,53 @@
 @import 'mixin'
 
 *
-	line-height 1.65
-	text-rendering optimizeLegibility
-	-webkit-font-smoothing antialiased
-	-moz-osx-font-smoothing grayscale
-	outline none!important
-	-webkit-tap-highlight-color: transparent !important
+  line-height 1.65
+  text-rendering optimizeLegibility
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  outline none!important
+  -webkit-tap-highlight-color: transparent !important
 
 html,body
-	scrollbar-width none /* Firefox */
-	-ms-overflow-style none /* IE 10+ */
-	::-webkit-scrollbar
-		display none /* WebKit */
-		width 0px /* WebKit */
-	scroll-behavior smooth
-	font-family sans-serif
-	height 100%
-	width 100%
+  scrollbar-width none /* Firefox */
+  -ms-overflow-style none /* IE 10+ */
+  ::-webkit-scrollbar
+    display none /* WebKit */
+    width 0px /* WebKit */
+  scroll-behavior smooth
+  font-family sans-serif
+  height 100%
+  width 100%
 
 .container
-	max-width 1170px
-	width 100%
-	position relative
-	margin 0 auto
+  width: 100%
+  max-width 1410px
+  margin 0 auto
+  height: 100%
+  position: relative
+  +bp(xl)
+    max-width 1170px
+  +bp(l)
+    max-width 970px
+  +bp(m)
+    max-width none
+    padding 0 15px
+    box-sizing border-box
 
 img
-	height 100%
-	width 100%
-	object-fit cover
+  height 100%
+  width 100%
+  object-fit cover
 
 button, input, textarea
-	font-family inherit
-	margin 0
-	padding 0
-	background transparent
+  font-family inherit
+  margin 0
+  padding 0
+  background transparent
 
 span
-	color inherit
+  color inherit
 
 a
-	color inherit
-	text-decoration none
+  color inherit
+  text-decoration none
