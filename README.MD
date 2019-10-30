@@ -2,16 +2,16 @@
 ----------
 package.json 
 ```json
-"scripts": {"dev": "webpack-dashboard -c -t ...
+"scripts": {"dev": "webpack-dashboard -t ...
 ```
-![screenshot webpack-dashboard -c -m -t](screenshot.png)
+![screenshot webpack-dashboard -t](screenshot.png)
 
 ----------
 package.json 
 ```json
-"scripts": {"dev": "webpack-dashboard -c -m -t ...
+"scripts": {"dev": "webpack-dashboard -m -t ...
 ```
-![screenshot webpack-dashboard -c -t](screenshot2.png)
+![screenshot webpack-dashboard -m -t](screenshot2.png)
 
 ----------
 ```npm run dev``` - for start work <i>(with webpack-dashboard)</i> :fire:
