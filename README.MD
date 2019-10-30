@@ -2,14 +2,14 @@
 ----------
 package.json 
 ```json
-"scripts": {"dev": "webpack-dashboard -c -m -t ...
+"scripts": {"dev": "webpack-dashboard -c -t ...
 ```
 ![screenshot webpack-dashboard -c -m -t](screenshot.png)
 
 ----------
 package.json 
 ```json
-"scripts": {"dev": "webpack-dashboard -c -t ...
+"scripts": {"dev": "webpack-dashboard -c -m -t ...
 ```
 ![screenshot webpack-dashboard -c -t](screenshot2.png)
 
