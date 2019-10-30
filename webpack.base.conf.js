@@ -162,7 +162,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`
     }),
-    // new HtmlWebpackPlugin(),
     ...glob.sync(`${PATHS.src}/*.html`).map(htmlFile => {
       return new HtmlWebpackPlugin({
         filename: path.basename(htmlFile),
