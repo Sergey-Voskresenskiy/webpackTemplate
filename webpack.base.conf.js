@@ -155,12 +155,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new SpriteLoaderPlugin(),
     new DashboardPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`
     }),
+    // new HtmlWebpackPlugin(),
     ...glob.sync(`${PATHS.src}/*.html`).map(htmlFile => {
       return new HtmlWebpackPlugin({
         filename: path.basename(htmlFile),

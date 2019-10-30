@@ -9,10 +9,15 @@ let devWebpackConfig = merge (baseWebpackConfig, {
 		contentBase: baseWebpackConfig.externals.paths.dist,
 		historyApiFallback: true,
     open: true,
-    port: 666,
+    port: 1234,
     inline: true,
     hot: true,
     liveReload: true,
+    contentBase: [ './src/' ],
+    watchContentBase: true,
+		watchOptions: {
+				poll: true
+		},
 		overlay: {
       warnings: true,
 			errors: true
