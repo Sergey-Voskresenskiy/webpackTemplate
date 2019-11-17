@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dashboard -m -t -- webpack-dev-server --color --progress --config webpack.dev.conf.js --watch",
-    "build": "webpack --config webpack.build.conf.js",
+    "build": "webpack --config webpack.build.conf.js"
   },
   "browserslist": [
     ">1%",

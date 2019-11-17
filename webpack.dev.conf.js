@@ -6,7 +6,6 @@ let devWebpackConfig = merge (baseWebpackConfig, {
 	devtool: 'cheap-module-eval-source-map',
 	mode: 'development',
 	devServer: {
-		contentBase: baseWebpackConfig.externals.paths.dist,
 		historyApiFallback: true,
     open: true,
     port: 1234,
@@ -57,7 +56,7 @@ let devWebpackConfig = merge (baseWebpackConfig, {
 			filename: '[file].map'
 		}),
 	]
-})
+});
 module.exports = new Promise ((resolve, reject) => {
 	resolve (devWebpackConfig)
-})
+});

@@ -35,7 +35,7 @@ let buildWebpackConfig = merge (baseWebpackConfig, {
 			},
 		]
 	},
-})
+});
 module.exports = new Promise ((resolve, reject) => {
 	resolve (buildWebpackConfig)
-})
+});
