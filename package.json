@@ -51,7 +51,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lazyload": "^2.0.0-rc.2",
     "reset-css": "^4.0.1"
   }
