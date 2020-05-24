@@ -36,7 +36,7 @@ package.json
 
 html
 ```html
-<img class='lazyload' data-src='hereYouImage' src='data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=' alt=''>
+<img class='lazyload' data-src='hereYouImage' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' alt=''>
 ```
 app.js
 ```javascript
