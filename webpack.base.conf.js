@@ -198,12 +198,13 @@ module.exports = {
       }),
     ],
     splitChunks: {
+      automaticNameDelimiter: '~',
       cacheGroups: {
         vendor: {
           name: "vendors",
-          test: /node_modules/,
-          chunks: "all",
-          enforce: true,
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "initial",
+          enforce: false,
         },
       },
     },
