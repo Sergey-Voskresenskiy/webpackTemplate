@@ -36,11 +36,11 @@ package.json
 
 html
 ```html
-<img class='lazyload' data-src='hereYouImage' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' alt=''>
+<img class='lazy' data-src='hereYouImage' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' alt=''>
 ```
 app.js
 ```javascript
-  lazyload();
+  let lazyLoadInstance = new LazyLoad({elements_selector:".lazy"}); 
 ```
 
 

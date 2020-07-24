@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const glob = require("glob");
 const DashboardPlugin = require("webpack-dashboard/plugin");
@@ -12,19 +12,20 @@ const PATHS = {
   src: path.join(__dirname, "./src"),
   dist: path.join(__dirname, "./dist"),
   fonts: path.join(__dirname, "./src/fonts"),
-  assets: "assets/"
+  assets: "assets/",
 };
 module.exports = {
   externals: {
-    paths: PATHS
+    paths: PATHS,
+    jQuery: "jQuery",
   },
   entry: {
-    app: PATHS.src
+    app: PATHS.src,
   },
   output: {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].js`,
-    publicPath: "/"
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -38,18 +39,18 @@ module.exports = {
               {
                 exclude: [
                   "transform-async-to-generator",
-                  "transform-regenerator"
-                ]
-              }
+                  "transform-regenerator",
+                ],
+              },
             ],
             plugins: [
               ["@babel/plugin-proposal-optional-chaining"],
               ["@babel/plugin-proposal-nullish-coalescing-operator"],
-              ["module:fast-async", { spec: true }]
-            ]
-          }
+              ["module:fast-async", { spec: true }],
+            ],
+          },
         },
-        exclude: "/node_modules/"
+        exclude: "/node_modules/",
       },
       {
         test: /\.html$/,
@@ -59,25 +60,25 @@ module.exports = {
             options: {
               attrs: ["img:src", "img:data-src"],
               minimize: false,
-              interpolate: true
-            }
-          }
-        ]
+              interpolate: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: "file-loader",
         options: {
-          name: `${PATHS.assets}fonts/[name].[ext]`
-        }
+          name: `${PATHS.assets}fonts/[name].[ext]`,
+        },
       },
       {
         test: /\.(mp3|mp4|webp)(\?v=\d+\.\d+\.\d+)(\?.*)?$/,
         use: [
           {
-            loader: "file-loader"
-          }
-        ]
+            loader: "file-loader",
+          },
+        ],
       },
       {
         test: /\.(svg)(\?.*)?$/,
@@ -86,8 +87,8 @@ module.exports = {
             loader: "svg-sprite-loader",
             options: {
               extract: false,
-              symbolId: "[name]"
-            }
+              symbolId: "[name]",
+            },
           },
           {
             loader: "svgo-loader",
@@ -107,11 +108,11 @@ module.exports = {
                 { removeUselessStrokeAndFill: true },
                 { sortAttrs: true },
                 { convertColors: { shorthex: false } },
-                { convertPathData: false }
-              ]
-            }
-          }
-        ]
+                { convertPathData: false },
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.module\.css$/i,
@@ -120,10 +121,10 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
-            }
-          }
-        ]
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css|styl$/,
@@ -136,23 +137,23 @@ module.exports = {
             options: {
               import: true,
               sourceMap: true,
-              importLoaders: 2
-            }
+              importLoaders: 2,
+            },
           },
           {
             loader: "postcss-loader",
             options: {
               config: {
-                path: `${PATHS.src}/js/postcss.config.js`
-              }
-            }
+                path: `${PATHS.src}/js/postcss.config.js`,
+              },
+            },
           },
           {
-            loader: "stylus-loader"
-          }
-        ]
-      }
-    ]
+            loader: "stylus-loader",
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -160,19 +161,19 @@ module.exports = {
     new DashboardPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`
+      filename: `${PATHS.assets}css/[name].css`,
     }),
-    ...glob.sync(`${PATHS.src}/*.html`).map(htmlFile => {
+    ...glob.sync(`${PATHS.src}/*.html`).map((htmlFile) => {
       return new HtmlWebpackPlugin({
         filename: path.basename(htmlFile),
-        template: htmlFile
+        template: htmlFile,
       });
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery"
-    })
+      "window.jQuery": "jquery",
+    }),
   ],
   optimization: {
     minimizer: [
@@ -183,28 +184,28 @@ module.exports = {
         terserOptions: {
           ie8: true,
           safari10: true,
-          comments: false
+          comments: false,
         },
         extractComments: {
           condition: /^\**!|@preserve|@license|@cc_on/i,
-          filename: file => {
+          filename: (file) => {
             return `${file}.LICENSE`;
           },
-          banner: licenseFile => {
+          banner: (licenseFile) => {
             return ``;
-          }
-        }
-      })
+          },
+        },
+      }),
     ],
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendors",
-          test: /node_modules/,
-          chunks: "all",
-          enforce: true
-        }
-      }
-    }
-  }
+    // splitChunks: {
+    //   cacheGroups: {
+    //     vendor: {
+    //       name: "vendors",
+    //       test: /node_modules/,
+    //       chunks: "all",
+    //       enforce: true,
+    //     },
+    //   },
+    // },
+  },
 };
